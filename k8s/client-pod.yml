@@ -1,0 +1,13 @@
+apiVersion: v1 # with this api version we scopes or limits the type of objets that we want to create with any given configuration file
+kind: Pod #  the kind field is used to represent the type of object that we want to make
+metadata:
+  name: client-pod # name of pod that gets created
+  labels:
+    component: web #this label components web is how these two files or objects gets linked together,also this label -> component: web is going to take traffic on these listed ports 
+spec:
+  containers:
+    - name: client
+      image: stephengrinder/multi-client
+      imagePullPolicy: Always
+      ports:
+        - containerPort: 3000 # exposing port to the outside world

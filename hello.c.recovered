@@ -1,0 +1,22 @@
+docker run image_name   // it will check if the image is present locally on hard-drive and if not it will fetch the image from docker-hub and run it
+
+docker ps  // this will list all the running containers
+
+
+docker run image_name overriding_command   // if we don't provide overriding command then docker with run the default command associate with image and also that overriding command should be prensent inside that image otherwise it will throw error!
+
+docker ps --all // this will list all the container that had been run on a machine
+
+
+docker run = docker create + docker start
+
+docker create image_name // this will create a container from an image and will print the container id of new created container
+
+docker start -a container_id // this will start the container from above, -a will watch the output from container and print it to my terminal
+
+exited or stopped container can be restarted with docker start -a container_id or docker start container_id 
+
+docker system prune // this will remove all the stopped containers that are occupying disk space
+
+
+

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: client-node-port
+spec:
+  type: NodePort #type of service. There are 4 types of services -> ClusterIP, NodePort(Exposes container to the outside world, only good for dev purpose), LoadBalancer, Ingres.
+  ports:
+    - port: 3050 # this port is going to be the port that onther pod or another container inside of our application could access, in order to get acces the multi-client pod. https://drive.google.com/file/d/1riysti39JyqYXU3E8WJ5qfLNaWmcYznj/view?usp=share_link
+      targetPort: 3000 # port to the pod to which we want to open traffic
+      nodePort: 31515 # it is the port that we are going to inside our browser are going to access to test out the container running insde our pod. This port we type into our browser. this number is always going to be in between 30000 - 32767
+  selector:
+    component: web #this label components web is how these two files or objects gets linked together, also this label -> component: web is going to take traffic on these listed ports 
